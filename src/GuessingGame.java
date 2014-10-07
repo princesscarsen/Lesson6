@@ -8,12 +8,14 @@
  * @author cars5260
  */
 public class GuessingGame extends javax.swing.JFrame {
-
+    int guess;
+    GuessMachine machine;
     /**
      * Creates new form GuessingGame
      */
     public GuessingGame() {
         initComponents();
+        machine=new GuessMachine();
     }
 
     /**
@@ -51,6 +53,12 @@ public class GuessingGame extends javax.swing.JFrame {
         btnsubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsubmitActionPerformed(evt);
+            }
+        });
+
+        txtguess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtguessActionPerformed(evt);
             }
         });
 
@@ -100,11 +108,19 @@ public class GuessingGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubmitActionPerformed
-        int number;
-        number= Integer.parseInt(txtguess.getText());
-        lblresult.setText("You Guessed a "+number);
-        lblattempts.setText(""+1);
+        guess=Integer.parseInt(txtguess.getText());
+        if (machine.setguess(guess)){
+            lblresult.setText(machine.giveHint());
+            lblattempts.setText(""+machine.getNumbguesses());
+        }
+        else
+            lblresult.setText("Invalid Guess");
+      
     }//GEN-LAST:event_btnsubmitActionPerformed
+
+    private void txtguessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtguessActionPerformed
+        // TsdsODO add your handling code here:
+    }//GEN-LAST:event_txtguessActionPerformed
 
     /**
      * @param args the command line arguments
