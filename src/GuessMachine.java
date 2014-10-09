@@ -12,18 +12,25 @@ public class GuessMachine {
         if(guess>number){
            return "You guessed too High guess lower ";
           }
-        else{
+        else if (guess<number){
             return "You guessed too low guess higher";
         }
+        else 
+            return "You got it!";
+    }
+    
+    
+    public boolean setGuess(int g){
+     if(g>=1&&g<=100){
+        numguesses++;
+        guess=g;
+        return true;
+    }else
+        return false;
     }
     
     public int getNumbguesses(){
-        if(guess<number || guess>number){
-            numguesses++;
-            
-        }
+        return numguesses;
         
     }
-//to do -add methods:
-    //giveHint(),setGuess(),getNumGuesses()
 }
