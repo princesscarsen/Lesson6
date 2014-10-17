@@ -108,6 +108,7 @@ public class GuessingGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubmitActionPerformed
+        //runs the code for the submit button
         guess=Integer.parseInt(txtguess.getText());
         if (machine.setGuess(guess)){
             lblresult.setText(machine.giveHint());
